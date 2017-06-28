@@ -1,0 +1,161 @@
+<style>
+svg.ct-chart-bar, svg.ct-chart-line{
+	overflow: visible;
+}
+.ct-label.ct-horizontal { position: relative; transform: rotate(45deg); transform-origin: left top; }
+</style>
+<div class="wrapper wrapper-content row" style="background:#fff;">
+	<div class="row">
+		<div>
+			<div class="col-lg-3">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title" style="border:none;">
+						<span class="label label-success pull-right">This Month</span>
+						<h5>Transactions</h5>
+					</div>
+					<div class="ibox-content">
+						<h1 class="no-margins">40,886,200</h1>
+						<small>All customer transactions</small>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title" style="border:none;">
+						<span class="label label-info pull-right">Customer Value</span>
+						<h5>Value</h5>
+					</div>
+					<div class="ibox-content">
+						<h1 class="no-margins">51,275,800</h1>
+						<small>My customer value</small>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title" style="border:none;">
+						<span class="label label-info pull-right">Customer Profit</span>
+						<h5>Profit</h5>
+					</div>
+					<div class="ibox-content">
+						<h1 class="no-margins">1,275,800</h1>
+						<small>Customer profitability</small>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title" style="border:none;">
+						<span class="label label-primary pull-right">My Customers</span>
+						<h5>Customer</h5>
+					</div>
+					<div class="ibox-content">
+						<div class="stat-percent font-bold text-navy">
+							<i class="fa-4x fa fa-male"></i>
+							<i class="fa-4x fa fa-female"></i>
+						</div>
+						<h1 class="no-margins">300</h1>
+						<small>All my customer</small>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="col-lg-12"><hr /></div>
+			<div class="col-lg-4">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title" style="border:none;">
+						<span class="label label-success pull-right">NBA</span>
+						<h5>Next Best Action</h5>
+					</div>
+					<div class="ibox-content" style="padding:0px; margin:0px;">
+						<div class="table table-responsive" style="margin:0px; padding:0px;">
+							<table class="table table-hover table-bordered">
+								<thead>
+									<tr>
+										<th>S/N</th>
+										<th>Customer</th>
+										<th>Product Name</th>
+										<th>%</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="nba in nba_data">
+										<td>{{nba.sn}}</td>
+										<td>{{nba.customer | capitalize:true}}</td>
+										<td>{{nba.product | capitalize:true}}</td>
+										<td>{{nba.percent}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title" style="border:none;">
+						<span class="label label-success pull-right">5 Years CLV</span>
+						<h5>Top Customer in 5 Years</h5>
+					</div>
+					<div class="ibox-content" style="padding:0px; border:none;">
+						<c3chart bindto-id="donut-plot1-chart" chart-data="clv_data" chart-columns="clv_label">
+							<chart-donut show-label="true" title="CLV"/>
+							<chart-legend show-legend="true" legend-position="bottom"/>	
+						</c3chart>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title" style="border:none;">
+						<span class="label label-success pull-right">Churners</span>
+						<h5>Churn Prediction</h5>
+					</div>
+					<div class="ibox-content" style="padding:0px; margin:0px;">
+						<div class="table table-responsive" style="margin:0px; padding:0px;">
+							<table class="table table-hover table-bordered">
+								<thead>
+									<tr>
+										<th>S/N</th>
+										<th>Customer</th>
+										<th>Value</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="chuner in chuner_data">
+										<td>{{chuner.sn}}</td>
+										<td>{{chuner.customer | capitalize:true}}</td>
+										<td><i class="fa fa-level-up text-navy"></i> {{chuner.percent}}</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12"><hr /></div>
+			<div class="col-lg-5">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title" style="border:none;">
+						<span class="label label-success pull-right">Profitability</span>
+						<h5>Top Profitable Customer</h5>
+					</div>
+					<div class="ibox-content" style="padding:0px; border:none;">
+						<chartist class="ct-chart ct-perfect-fourth" chartist-data="tprofit_output" chartist-chart-options="horizontalOptions" chartist-chart-type="Bar"></chartist>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-7">
+				<div class="ibox float-e-margins">
+					<div class="ibox-title" style="border:none;">
+						<span class="label label-success pull-right">5 Years Profitability</span>
+						<h5>Profitability Prediction</h5>
+					</div>
+					<div class="ibox-content" style="padding:0px; border:none;">
+						<div id="chart_a"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

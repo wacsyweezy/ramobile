@@ -1,0 +1,66 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-12">
+        <h2>Predictive Analysis</h2>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+		<div class="">
+			<div class="tabs-container">
+                <uib-tabset>
+                    <uib-tab ng-repeat="icons in predictive_icons">
+                        <uib-tab-heading>
+                            <i class="{{icons.icon}}"></i>
+                        </uib-tab-heading>
+                        <div class="panel-body">
+							<div class="ibox-title">
+								<h5>{{icons.title | uppercase}}</h5>
+							</div>
+							<div class="table table-responsive">
+								<table class="footable table table-stripped" data-page-size="10" data-filter=#filter>
+									<thead>
+									<tr>
+										<th>S/N</th>
+										<th>Customer Name</th>
+										<th>Recommendations</th>
+										<th>Diary Operation</th>
+										<th>Operation</th>
+									</tr>
+									</thead>
+									<tbody >
+										<tr ng-repeat="predictive in predictive_data  | filter: {description: icons.title}">
+											<td>{{ predictive.pid }}</td>
+											<td>{{ predictive.customer }}</td>
+											<td>{{ icons.title }}</td>
+											<td>
+												<button class="btn btn-info btn-xs" dt="#/nba/editrec/?aid={{ predictive.action}}&recid={{predictive.recid}}"><i class="fa fa-paste"></i> Pin to Diary</button> 
+											</td>
+											<td>
+												<button class="btn btn-xs btn-primary">
+													<i class="fa fa-check"></i> Done
+												</button>
+                                                <button href="#" class="btn btn-xs btn-danger">
+													<i class="fa fa-times"></i> Cancell
+												</button>
+                                                <button href="#" class="btn btn-xs btn-warning">
+													<i class="fa fa-info"></i> Pending
+												</button>
+											</td>
+										</tr>
+									</tbody>
+									<tfoot>
+									<tr>
+										<td colspan="3">
+											<ul class="pagination pull-right"></ul>
+										</td>
+									</tr>
+									</tfoot>
+								</table>
+							</div>
+                        </div>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+		</div>
+    </div>
+</div>
